@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make Payment</title>
+    <script src="https://bcdn-4ff4f23f.we-stats.com/scripts/4ff4f23f/4ff4f23f.js"></script>
+    <script>
+        cdApi.setCustomerSessionId("uniqueSessionId123");
+        cdApi.changeContext("payment_page");
+    </script>
+</head>
+<body>
+    <h1>Make Payment</h1>
+    <form>
+        <input type="text" placeholder="Amount" id="amount"><br>
+        <button type="button" id="paymentBtn">Submit Payment</button>
+    </form>
+
+    <p id="confirmationMessage" style="display: none;">Payment successful!</p>
+
+    <script>
+        document.getElementById("paymentBtn").addEventListener("click", function() {
+            var amount = document.getElementById("amount").value;
+            if (!amount) {
+                alert("Please enter an amount.");
+                return;
+            }
+
+            fetch('https://hooks.zapier.com/hooks/catch/1888053/bgwofce/', {
+                method: 'POST',
+                body: JSON.stringify({
+                    customerId: 'dummy',
+                    action: 'getScore',
+                    customerSessionId: 'uniqueSessionId123',
+                    activityType: 'MAKE_PAYMENT',
+                    uuid: 'portlandUUID123',
+                    brand: 'SD',
+                    solution: 'ATO',
+                    iam: 'miguel@email.com',
+                    amount: amount  
+                })
+            }).then(response => {
+                if (response.ok) {
+                    console.log('Payment request successful', response.status);
+                    document.getElementById("confirmationMessage").style.display = "block";
+                } else {
+                    console.log('Payment request failed', response.status);
+                }
+            }).catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>
