@@ -8,6 +8,7 @@
     <script>
         cdApi.changeContext("logout_screen");
 
+        // Clear the session ID on logout
         cdApi.setCustomerSessionId(null); 
 
         console.log('Customer session ID reset on logout.');
