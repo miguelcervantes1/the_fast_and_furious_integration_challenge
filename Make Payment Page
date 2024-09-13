@@ -18,6 +18,7 @@
     </form>
 
     <p id="confirmationMessage" style="display: none;">Payment successful!</p>
+    <button id="logoutBtn" style="display: none;" onclick="logout()">Logout</button>
 
     <script>
         document.getElementById("paymentBtn").addEventListener("click", function() {
@@ -44,11 +45,17 @@
                 if (response.ok) {
                     console.log('Payment request successful', response.status);
                     document.getElementById("confirmationMessage").style.display = "block";
+                    document.getElementById("logoutBtn").style.display = "block"; // Show the logout button
                 } else {
                     console.log('Payment request failed', response.status);
                 }
             }).catch(error => console.error('Error:', error));
         });
+
+        function logout() {
+            alert("You have been logged out.");
+            window.location.href = "login.html"; // Adjust the URL to your login page
+        }
     </script>
 </body>
 </html>
