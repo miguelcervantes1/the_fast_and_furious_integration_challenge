@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Overview</title>
+    <script src="https://bcdn-4ff4f23f.we-stats.com/scripts/4ff4f23f/4ff4f23f.js"></script>
+    <script>
+        cdApi.setCustomerSessionId("uniqueSessionId123");
+        cdApi.changeContext("account_overview");
+    </script>
+</head>
+<body>
+    <h1>Account Overview</h1>
+    <p>Welcome, user!</p>
+
+    <script>
+        fetch('https://hooks.zapier.com/hooks/catch/1888053/bgwofce/', {
+            method: 'POST',
+            body: JSON.stringify({
+                customerId: 'dummy',
+                action: 'getScore',
+                customerSessionId: 'uniqueSessionId123',
+                activityType: 'ACCOUNT_OVERVIEW',
+                uuid: 'portlandUUID123',
+                brand: 'SD',
+                solution: 'ATO',
+                iam: 'miguel@email.com'
+            })
+        }).then(response => {
+            if (response.ok) {
+                console.log('getScore request successful', response.status);
+            } else {
+                console.log('getScore request failed', response.status);
+            }
+        }).catch(error => console.error('Error:', error));
+    </script>
+
+    <a href="payment.html">Make a Payment</a><br>
+    <a href="logout.html">Logout</a>
+</body>
+</html>
