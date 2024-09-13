@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script src="https://bcdn-4ff4f23f.we-stats.com/scripts/4ff4f23f/4ff4f23f.js"></script>
+    <script>
+        cdApi.setCustomerSessionId("uniqueSessionId123");
+        cdApi.changeContext("login_screen");
+    </script>
+</head>
+<body>
+    <h1>Login Page</h1>
+    <form>
+        <input type="text" placeholder="Username"><br>
+        <input type="password" placeholder="Password"><br>
+        <button type="button" id="loginBtn">Login</button>
+    </form>
+
+    <script>
+        document.getElementById("loginBtn").addEventListener("click", function() {
+            fetch('https://hooks.zapier.com/hooks/catch/1888053/bgwofce/', {
+                method: 'POST',
+                body: JSON.stringify({
+                    customerId: 'dummy',
+                    action: 'init',
+                    customerSessionId: 'uniqueSessionId123',
+                    activityType: 'LOGIN',
+                    uuid: 'portlandUUID123',
+                    brand: 'SD',
+                    solution: 'ATO',
+                    iam: 'miguel@email.com'
+                })
+            }).then(response => {
+                if (response.ok) {
+                    console.log('Init request successful', response.status);
+                    window.location.href = "account.html";
+                } else {
+                    console.log('Init request failed', response.status);
+                }
+            }).catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>
