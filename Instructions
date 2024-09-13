@@ -1,9 +1,0 @@
-If you have VS Code and the Live Server extension installed, you can follow the instructions below to run the project with live updates.
-
-Once the index.html file is open, navigate through the website to test each page:
-
-Index Page: This is the homepage where you can start.
-Login Page: Click on the "Login" link to go to login.html and test the login functionality.
-Account Overview: After logging in, you will be taken to account.html.
-Payment Page: From the account overview, navigate to payment.html to test the payment submission.
-Logout Page: Finally, click on the logout link to be taken to logout.html.
